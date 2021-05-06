@@ -1,44 +1,180 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>TacminYazilim-SanalPos</title>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.css">
+
+    <link rel="stylesheet" href="~/Content/assets/vendors/iconly/bold.css">
+
+    <link rel="stylesheet" href="~/Content/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="~/Content/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/Content/assets/css/app.css">
+    <link rel="shortcut icon" href="~/Content/assets/images/favicon.svg" type="image/x-icon">
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div id="sidebar" class="active">
+
+        <div class="sidebar-wrapper active">
+            <div class="sidebar-header">
+                <div class="d-flex justify-content-between">
+             
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <div class="sidebar-menu">
+
+
+                <ul class="menu">
+                    <li class="sidebar-title">KONTROL PANELİ</li>
+
+                    <li class="sidebar-item active">
+                        <a href="/Page/PaymentList" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Ödemeler</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item  has-sub">
+                        <a class='sidebar-link'>
+                            <i class="bi bi-cash"></i>
+                            <span>Ödeme İsteği İşlemleri</span>
+                        </a>
+                        <ul class="submenu ">
+                            <li class="submenu-item ">
+                                <a href="/Page/PaymentRequest">
+                                    Ödeme İsteği Gönder
+                                </a>
+                            </li>
+                            @*<<li class="submenu-item ">
+                                    <a href="/Page/DealerCustomerUpdate">
+                                        Müşteri Ekle/Düzenle/Sil
+                                    </a>
+                                </li>
+                                li class="submenu-item ">
+                                    <a href="/Page/DealerCustomerSend">
+
+                                        Toplu Ödeme İsteği Gönder
+                                    </a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="/Report/PaymentRequestReport">
+
+                                        Ödeme İsteği Raporla
+                                    </a>
+                                </li>*@
+                        </ul>
+                    </li>
+
+
+
+                    @*<li class="sidebar-item  ">
+                            <a href="/Page/DealerProfile" class='sidebar-link'>
+                                <i class="bi bi-envelope-fill"></i>
+                                <span>Profil</span>
+                            </a>
+                        </li>*@
+
+                    @*<li class="sidebar-item  ">
+                            <a href="/Page/Extracts" class='sidebar-link'>
+                                <i class="bi bi-chat-dots-fill"></i>
+                                <span>Para Gönderimleri</span>
+                            </a>
+                        </li>*@
+
+                    @*<li class="sidebar-item  ">
+                            <a href="/Report/UserList" class='sidebar-link'>
+                                <i class="bi bi-image-fill"></i>
+                                <span>Kullanıcı Listesi</span>
+                            </a>
+                        </li>*@
+
+                    @*<li class="sidebar-item  ">
+                            <a href="/Report/CommissionRates" class='sidebar-link'>
+                                <i class="bi bi-basket-fill"></i>
+                                <span>Komisyon Oranları</span>
+                            </a>
+                        </li>*@
+
+                    <li class="sidebar-item ">
+                        <a href="/Page/EYV3DPay" class='sidebar-link'>
+                            <i class="bi bi-person-badge-fill"></i>
+                            <span>Ödeme Yap</span>
+                        </a>
+
+                    </li>
+
+                    @*<li class="sidebar-item  ">
+                            <a href="/Report/PaymentReturnList" class='sidebar-link'>
+                                <i class="bi bi-x-octagon-fill"></i>
+                                <span>İade Talep Raporu</span>
+                            </a>
+
+                        </li>*@
+
+
+                    @*<li class="sidebar-item ">
+                            <a class='sidebar-link' href="/Report/ReceiptList">
+                                <i class="bi bi-life-preserver"></i>
+                                <span>Dekont/Fatura</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a class='sidebar-link' href="/Page/CommonPaymentManage">
+                                <i class="bi bi-puzzle"></i>
+                                <span>Taksit Yönetimi</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a class='sidebar-link' href="/Page/PosRegisterDealer">
+                                <i class="bi bi-cash"></i>
+                                <span>Üye İşyeri Başvuru</span>
+                            </a>
+                        </li>*@
+                    <li class="sidebar-item  ">
+                        <a class='sidebar-link' href="/Report/AccountActivitiesDealer">
+                            <i class="bi bi-cash"></i>
+                            <span>İşlemler</span>
+                        </a>
+                    </li>
+                    @*<li class="sidebar-item  ">
+                            <a class='sidebar-link' href="/Page/ChargeBackDealer">
+                                <i class="bi bi-cash"></i>
+                                <span>Ödeme İtirazı Yönetimi</span>
+                            </a>
+                        </li>*@
+
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
+            <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    <div id="app">
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+            <div class="page-heading">
+            </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+            @RenderBody()
+        </div>
+    </div>
 </body>
+
 </html>
+<script src="~/Content/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="~/Content/assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="~/Content/assets/vendors/apexcharts/apexcharts.js"></script>
+<script src="~/Content/assets/js/pages/dashboard.js"></script>
+
+<script src="~/Content/assets/js/main.js"></script>

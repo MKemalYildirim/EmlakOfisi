@@ -1,18 +1,19 @@
 namespace EmlakOfisi.Migrations
 {
+    using EmlakOfisi.Dal.Concrete.EntityFramework.Context;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EmlakOfisi.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EmlakOfisiContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(EmlakOfisi.Models.ApplicationDbContext context)
+        protected override void Seed(EmlakOfisiContext context)
         {
             //  This method will be called after migrating to the latest version.
 

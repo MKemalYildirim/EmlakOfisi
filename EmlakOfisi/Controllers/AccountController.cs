@@ -9,23 +9,32 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EmlakOfisi.Models;
+using EmlakOfisi.Entities.Models;
+using EmlakOfisi.Bll;
+using EmlakOfisi.Interfaces;
+using EmlakOfisi.Dal.Concrete.EntityFramework.Repository;
 
 namespace EmlakOfisi.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        ViewModel vm = new ViewModel();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
+
+        IGenericService<Agent> GAgentService = new GenericManager<Agent>(new EfGenericRepository<Agent>());
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -34,9 +43,9 @@ namespace EmlakOfisi.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -50,6 +59,24 @@ namespace EmlakOfisi.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
+
+        [AllowAnonymous]
+        public ActionResult Index()
+        {
+            return View();
         }
 
         //
@@ -66,16 +93,16 @@ namespace EmlakOfisi.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(Agent Agent, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View(Agent);
             }
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(Agent.UserName, Agent.Password, true, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -83,11 +110,11 @@ namespace EmlakOfisi.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = true });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    ModelState.AddModelError("", "Geçeriz Giriş Bilgisi !");
+                    return View(vm);
             }
         }
 
@@ -120,7 +147,7 @@ namespace EmlakOfisi.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -147,16 +174,17 @@ namespace EmlakOfisi.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(Agent Agent)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var user = new ApplicationUser { UserName = Agent.UserName};
+                var result = await UserManager.CreateAsync(user, Agent.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    Agent.Id = Guid.NewGuid().ToString();
+                   vm.Agent= GAgentService.Add(Agent);
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -169,7 +197,7 @@ namespace EmlakOfisi.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return View(vm);
         }
 
         //
