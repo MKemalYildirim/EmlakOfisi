@@ -96,20 +96,20 @@ namespace EmlakOfisi.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(User user, string returnUrl)
+        public async Task<ActionResult> Login(string UserName, string Password,string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(User);
             }
 
-            var result = await SignInManager.PasswordSignInAsync(user.UserName, user.Password, true, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(UserName, Password, true, shouldLockout: false);
 
             
             switch (result)
             {
                 case SignInStatus.Success:
-                   var role= UserManager.GetRoles(UserManager.FindByName(user.UserName).Id).FirstOrDefault();
+                   var role= UserManager.GetRoles(UserManager.FindByName(UserName).Id).FirstOrDefault();
                     if (role=="Admin")
                         return RedirectToAction("Register");
                     return RedirectToLocal(returnUrl);
