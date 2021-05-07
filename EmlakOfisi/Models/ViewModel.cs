@@ -9,8 +9,8 @@ namespace EmlakOfisi.Models
     public class ViewModel
     {
         public User User { get; set; }
-        public Agent Agent { get; set; }
         public Property Property { get; set; }
+        public List<Property> PropertyList { get; set; }
         public Adress Adress { get; set; }
     }
 }

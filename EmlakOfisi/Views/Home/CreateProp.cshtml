@@ -1,0 +1,151 @@
+﻿@model EmlakOfisi.Models.ViewModel
+@{
+    ViewBag.Title = "CreateProp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="row">
+
+
+
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin: 15px 0px;">
+        <div style="border:solid 1px #ccc; border-radius:8px; display: grid;">
+            <p style="margin-top:-20px; font-weight: bold; color: red;">Mülk Bigileri</p>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Property.State, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9" style="display: inline;">
+                    @Html.CheckBoxFor(x => x.Property.State, htmlAttributes: new { @checked = true,  value = "true" })
+                    @Html.ValidationMessageFor(model => model.Property.State, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Property.Price, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Property.Price,  new { @class = "form-control", Style = "max-width:100%;" } )
+                    @Html.ValidationMessageFor(model => model.Property.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Property.Type, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Property.Type,  new { @class = "form-control", Style = "max-width:100%;" } )
+                    @Html.ValidationMessageFor(model => model.Property.Type, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Property.RoomRage, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Property.RoomRage,  new { @class = "form-control", Style = "max-width:100%;" } )
+                    @Html.ValidationMessageFor(model => model.Property.RoomRage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Property.BathroomRange, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Property.BathroomRange,  new { @class = "form-control", Style = "max-width:100%;" } )
+                    @Html.ValidationMessageFor(model => model.Property.BathroomRange, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Property.BedroomRange, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Property.BedroomRange,  new { @class = "form-control", Style = "max-width:100%;" } )
+                    @Html.ValidationMessageFor(model => model.Property.BedroomRange, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Property.HomeAge, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Property.HomeAge,  new { @class = "form-control", Style = "max-width:100%;" })
+                    @Html.ValidationMessageFor(model => model.Property.HomeAge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Property.HomeSize, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Property.HomeSize,  new { @class = "form-control", Style = "max-width:100%;" })
+                    @Html.ValidationMessageFor(model => model.Property.HomeSize, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin: 15px 0px;">
+        <div style="border:solid 1px #ccc; border-radius:8px; display: grid;">
+            <p style="margin-top:-20px; font-weight: bold; color: red;">Adres</p>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Property.Adress.Country, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Property.Adress.Country,  new { @class = "form-control", Style = "max-width:100%;" } )
+                    @Html.ValidationMessageFor(model => model.Property.Adress.Country, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Property.Adress.City, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Property.Adress.City,  new { @class = "form-control", Style = "max-width:100%;" } )
+                    @Html.ValidationMessageFor(model => model.Property.Adress.City, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Property.Adress.County, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Property.Adress.County,  new { @class = "form-control", Style = "max-width:100%;" } )
+                    @Html.ValidationMessageFor(model => model.Property.Adress.County, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+    
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin: 15px 0px;">
+        <div style="border:solid 1px #ccc; border-radius:8px; display: grid;">
+            <p style="margin-top:-20px; font-weight: bold; color: red;">Açıklama</p>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Property.Desc, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Property.Desc,  new { @class = "form-control", Style = "max-width:100%;" } )
+                    @Html.ValidationMessageFor(model => model.Property.Desc, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <table>
+                <tr>
+                    <td>
+                        @Html.ActionLink("İptal", "Register", "Account", new { @class = "btn btn-danger" })
+                    </td>
+                    <td>
+                        <input type="submit" style="margin-left:10px;" value="Kayıt Oluştur" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+}

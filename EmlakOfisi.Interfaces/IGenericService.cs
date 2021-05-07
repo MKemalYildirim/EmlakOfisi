@@ -16,5 +16,7 @@ namespace EmlakOfisi.Interfaces
         bool Remove(T entity);
         bool Remove(Expression<Func<T, bool>> predicate);
         T Update(T entity);
+
+
     }
 }

@@ -7,6 +7,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EmlakOfisi.Models;
+using EmlakOfisi.Interfaces;
+using EmlakOfisi.Entities.Models;
+using EmlakOfisi.Bll;
+using EmlakOfisi.Dal.Concrete.EntityFramework.Repository;
 
 namespace EmlakOfisi.Controllers
 {
@@ -15,6 +19,7 @@ namespace EmlakOfisi.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        IGenericService<User> GUserService = new GenericManager<User>(new EfGenericRepository<User>());
 
         public ManageController()
         {
@@ -236,9 +241,12 @@ namespace EmlakOfisi.Controllers
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 if (user != null)
                 {
+                    var CurrentUser=GUserService.GettAll(x => x.Id == user.Id).FirstOrDefault();
+                    CurrentUser.Password = model.NewPassword;
+                    GUserService.Update(CurrentUser);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return RedirectToAction("Index", "Home");
             }
             AddErrors(result);
             return View(model);

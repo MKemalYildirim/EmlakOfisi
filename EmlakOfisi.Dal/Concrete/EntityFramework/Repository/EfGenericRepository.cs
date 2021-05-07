@@ -48,7 +48,9 @@ namespace EmlakOfisi.Dal.Concrete.EntityFramework.Repository
         public List<T> GettAll()
         {
             return context.Set<T>().AsNoTracking().ToList();
-        }
+        }    
+        
+
 
 
         public List<T> GettAll(System.Linq.Expressions.Expression<Func<T, bool>> predicate)

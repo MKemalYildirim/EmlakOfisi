@@ -18,7 +18,6 @@ namespace EmlakOfisi.Dal.Concrete.EntityFramework.Context
         }
 
         public virtual DbSet<Adress> Adress { get; set; }
-        public virtual DbSet<Agent> Agent { get; set; }
         public virtual DbSet<Property> Property { get; set; }
         public virtual DbSet<User> User { get; set; }
 
@@ -29,7 +28,6 @@ namespace EmlakOfisi.Dal.Concrete.EntityFramework.Context
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.Add(new UserMap());
             modelBuilder.Configurations.Add(new AdressMap());
-            modelBuilder.Configurations.Add(new AgentMap());
             modelBuilder.Configurations.Add(new PropertyMap());
             base.OnModelCreating(modelBuilder);
         }

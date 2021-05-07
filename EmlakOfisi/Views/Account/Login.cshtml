@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
 }
+
 @model EmlakOfisi.Models.ViewModel
 <!DOCTYPE html>
 <html lang="tr">
@@ -38,15 +39,15 @@
 
 
                     <div class="wrap-input100 validate-input" data-validate="Kullanıcı Adını Giriniz">
-                        @Html.ValidationMessageFor(x => x.Agent.UserName)
-                        @Html.DisplayFor(x => x.Agent.UserName)
-                        @Html.TextBoxFor(x => x.Agent.UserName, new { @class = "input100", placeholder = "Kullanıcı Adı" })
+                        @Html.ValidationMessageFor(x => x.User.UserName)
+                        @Html.DisplayFor(x => x.User.UserName)
+                        @Html.TextBoxFor(x => x.User.UserName, new { @class = "input100", placeholder = "Kullanıcı Adı" })
                         <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Şifreyi Giriniz">
-                        @Html.ValidationMessageFor(x => x.Agent.Password)
-                        @Html.DisplayFor(x => x.Agent.Password)
-                        @Html.TextBoxFor(x => x.Agent.Password, new { @class = "input100", placeholder = "Şifre" ,type="password"})
+                        @Html.ValidationMessageFor(x => x.User.Password)
+                        @Html.DisplayFor(x => x.User.Password)
+                        @Html.TextBoxFor(x => x.User.Password, new { @class = "input100", placeholder = "Şifre" ,type="password"})
                         <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                     </div>
 
@@ -64,15 +65,14 @@
 
     <div id="dropDownSelect1"></div>
 
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="vendor/animsition/js/animsition.min.js"></script>
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/select2/select2.min.js"></script>
-    <script src="vendor/daterangepicker/moment.min.js"></script>
-    <script src="vendor/daterangepicker/daterangepicker.js"></script>
-    <script src="vendor/countdowntime/countdowntime.js"></script>
-    <script src="js/main.js"></script>
-
 </body>
 </html>
+    <script src="~/Content/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/Login/vendor/animsition/js/animsition.min.js"></script>
+    <script src="~/Content/Login/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/Login/vendor/select2/select2.min.js"></script>
+    <script src="~/Content/Login/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/Content/Login/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="~/Content/Login/vendor/countdowntime/countdowntime.js"></script>
+    <script src="~/Content/Login/js/main.js"></script>

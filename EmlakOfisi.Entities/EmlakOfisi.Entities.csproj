@@ -48,16 +48,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseEntity.cs" />
+    <Compile Include="GetPropModel.cs" />
+    <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Mappings\AdressMap.cs" />
-    <Compile Include="Mappings\AgentMap.cs" />
+    <Compile Include="Mappings\UserMap.cs" />
     <Compile Include="Mappings\BaseEntityMap.cs" />
     <Compile Include="Mappings\PropertyMap.cs" />
-    <Compile Include="Mappings\UserMap.cs" />
     <Compile Include="Models\Adress.cs" />
-    <Compile Include="Models\Agent.cs" />
-    <Compile Include="Models\Property.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Property.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -1,0 +1,107 @@
+﻿@model EmlakOfisi.Models.ViewModel
+@Html.HiddenFor(x => x.Property.Id)
+<div class="modal-body" id="ModalDetail">
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" id="PropInfo" href="#home" data-toggle="tab">
+                Genel Bilgiler
+            </a>
+        </li>
+
+    </ul>
+    <div class="tab-content" style="border:none !important; padding:15px;" id="DetayModal">
+        <div id="home" class="tab-pane fade active show">
+            <div class="row">
+                <div class="form-group col-11">
+                    <div class="col spandiv" style="border-radius: 10px 10px 0px 0px; padding-top: 5px;">
+                        @Html.LabelFor(model => model.Property.Type, htmlAttributes: new { style = "font-size:14px;margin:0px; color: darkblue; font-weight:bold;" })
+                    </div>
+                    @Html.TextBoxFor(x => x.Property.Type, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Property.Type, "", new { @class = "text-danger" })
+
+                </div>
+                <div class=" col-1">
+                    <div class="col spandiv" style="border-radius: 10px 10px 0px 0px; padding-top: 5px;">
+                        @Html.LabelFor(model => model.Property.State, htmlAttributes: new { style = "font-size:14px;margin:0px; color: darkblue; font-weight:bold;" })
+                    </div>
+                    @Html.CheckBoxFor(x => x.Property.State, htmlAttributes: new { Style = "margin-left: 63%;" })
+                    @Html.ValidationMessageFor(model => model.Property.State, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col">
+                    <div class="col spandiv" style="border-radius: 10px 10px 0px 0px; padding-top: 5px;">
+                        @Html.LabelFor(model => model.Property.Price, htmlAttributes: new { style = "font-size:14px;margin:0px; color: darkblue; font-weight:bold;" })
+                    </div>
+                    @Html.TextBoxFor(x => x.Property.Price, htmlAttributes: new { @class = "number form-control" })
+                    @Html.ValidationMessageFor(model => model.Property.Price, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group col">
+                    <div class="col spandiv" style="border-radius: 10px 10px 0px 0px; padding-top: 5px;">
+                        @Html.LabelFor(model => model.Property.RoomRage, htmlAttributes: new { style = "font-size:14px;margin:0px; color: darkblue; font-weight:bold;" })
+                    </div>
+                    @Html.TextBoxFor(x => x.Property.RoomRage, htmlAttributes: new { @class = "number form-control" })
+                    @Html.ValidationMessageFor(model => model.Property.RoomRage, "", new { @class = "text-danger" })
+
+                </div>
+
+
+
+            </div>
+
+            <div class="row">
+                <div class="form-group col">
+                    <div class="col spandiv" style="border-radius: 10px 10px 0px 0px; padding-top: 5px;">
+                        @Html.LabelFor(model => model.Property.HomeSize, htmlAttributes: new { style = "font-size:14px;margin:0px; color: darkblue; font-weight:bold;" })
+                    </div>
+                    @Html.TextBoxFor(x => x.Property.HomeSize, htmlAttributes: new { @class = "number form-control" })
+                    @Html.ValidationMessageFor(model => model.Property.HomeSize, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group col">
+                    <div class="col spandiv" style="border-radius: 10px 10px 0px 0px; padding-top: 5px;">
+                        @Html.LabelFor(model => model.Property.HomeAge, htmlAttributes: new { style = "font-size:14px;margin:0px; color: darkblue; font-weight:bold;" })
+                    </div>
+                    @Html.TextBoxFor(x => x.Property.HomeAge, htmlAttributes: new { @class = "number form-control" })
+                    @Html.ValidationMessageFor(model => model.Property.HomeAge, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col">
+                    <div class="col spandiv" style="border-radius: 10px 10px 0px 0px; padding-top: 5px;">
+                        @Html.LabelFor(model => model.Property.Adress.Country, htmlAttributes: new { style = "font-size:14px;margin:0px; color: darkblue; font-weight:bold;" })
+                    </div>
+                    @Html.TextBoxFor(x => x.Property.Adress.Country, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Property.Adress.Country, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group col">
+                    <div class="col spandiv" style="border-radius: 10px 10px 0px 0px; padding-top: 5px;">
+                        @Html.LabelFor(model => model.Property.Adress.City, htmlAttributes: new { style = "font-size:14px;margin:0px; color: darkblue; font-weight:bold;" })
+                    </div>
+                    @Html.TextBoxFor(x => x.Property.Adress.City, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Property.Adress.City, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group col">
+                    <div class="col spandiv" style="border-radius: 10px 10px 0px 0px; padding-top: 5px;">
+                        @Html.LabelFor(model => model.Property.Adress.County, htmlAttributes: new { style = "font-size:14px;margin:0px; color: darkblue; font-weight:bold;" })
+                    </div>
+                    @Html.TextBoxFor(x => x.Property.Adress.County, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Property.Adress.County, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -17,5 +17,6 @@ namespace EmlakOfisi.Dal.Abstract
         bool Remove(Expression<Func<T, bool>> predicate);
 
         T Update(T entity);
+     
     }
 }
